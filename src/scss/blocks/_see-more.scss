@@ -1,0 +1,32 @@
+.see-more {
+  position: relative;
+  padding-left: 60px;
+  color: rgba($color: #fff, $alpha: 0.6);
+
+  display: block;
+
+  transform: rotate(-90deg) translateY(50%);
+  transform-origin: left center;
+  transition: color 0.3s ease-in-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 3px;
+    width: 38px;
+    background: #fff;
+    opacity: 0.3;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: rgba($color: #fff, $alpha: 1);
+
+    &::before {
+      opacity: 0.8;
+    }
+  }
+}
