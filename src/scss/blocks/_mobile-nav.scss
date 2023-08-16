@@ -1,44 +1,5 @@
-// .mobile-nav {
-//   position: fixed;
-//   // top: 0;
-//   top: -100%;
-//   width: 100%;
-//   height: 100%;
-//   z-index: 99;
-
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   padding-top: 40px;
-//   padding-bottom: 40px;
-//   // background: linear-gradient(209deg, #4287b3 -17.38%, #133f6b 78.4%), #276195;
-//   background: rgb(130, 156, 168);
-//   transition: all 0.2s ease-in;
-// }
-
-// .mobile-nav--open {
-//   top: 0;
-// }
-
-// .mobile-nav a {
-//   color: #fff;
-// }
-
-// .mobile-nav__list {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   row-gap: 20px;
-//   font-size: 28px;
-
-//   & .active {
-//     opacity: 0.5;
-//   }
-// }
-
 .mobile-nav-overlay {
-  opacity: 1;
+  opacity: 0;
   z-index: 99;
   position: absolute;
   left: 0;
@@ -50,4 +11,74 @@
   transition: all 0.4s ease-in;
 }
 
+.mobile-nav-overlay--open {
+  opacity: 1;
+  pointer-events: all;
+}
 
+.mobile-nav {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+
+  height: 100vh;
+  max-width: 440px;
+  width: 100%;
+  padding: 80px 60px 0;
+  background: linear-gradient(-90deg, black, rgba(0, 0, 0, 0.4));
+
+  transition: transform 0.3s ease-in;
+
+  @media (max-width: 767px) {
+    max-width: 320px;
+    padding: 40px 30px 0;
+  }
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__btn {
+    position: absolute;
+    top: 35px;
+    right: 50px;
+    width: 48px;
+    height: 48px;
+
+    @media (max-width: 767px) {
+      top: 30px;
+      right: 20px;
+      width: 42px;
+      height: 42px;
+    }
+  }
+
+  &__list {
+    font-size: 22px;
+
+    @media (max-width: 767px) {
+      margin-top: 50px;
+      font-size: 18px;
+    }
+
+    li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    a {
+      display: block;
+      padding: 30px 0;
+      transition: all 0.2s ease-in;
+
+      @media (max-width: 767px) {
+        padding: 15px 0;
+      }
+
+      &:hover {
+        padding-left: 20px;
+      }
+    }
+  }
+}
